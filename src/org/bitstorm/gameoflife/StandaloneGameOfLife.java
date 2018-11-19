@@ -85,7 +85,7 @@ public class StandaloneGameOfLife extends GameOfLife {
 		gridIO = new GameOfLifeGridIO( gameOfLifeGrid );
 
 		// create GameOfLifeCanvas
-		gameOfLifeCanvas = new CellGridCanvas(gameOfLifeGrid, cellSize);
+		gameOfLifeCanvas = CellGridCanvas.getInstance(gameOfLifeGrid, cellSize);
 
 		try {
 			// Make GameOfLifeCanvas a drop target
