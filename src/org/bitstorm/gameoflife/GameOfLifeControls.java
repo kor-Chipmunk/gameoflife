@@ -17,7 +17,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.Enumeration;
 import java.util.Vector;
-
+import org.bitstorm.gameoflife.ShapeCollection.Shapeofyou;;
 
 /**
  * GUI-controls of the Game of Life.
@@ -58,7 +58,7 @@ public class GameOfLifeControls extends Panel {
 		shapesChoice = new Choice();
 	
 		// Put names of shapes in menu
-		Shape[] shapes = ShapeCollection.getShapes();
+		Shapeofyou[] shapes = ShapeCollection.getShapescoll();
 		for ( int i = 0; i < shapes.length; i++ )
 			shapesChoice.addItem( shapes[i].getName() );
 
