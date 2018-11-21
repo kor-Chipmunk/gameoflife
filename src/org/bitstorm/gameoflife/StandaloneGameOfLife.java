@@ -56,7 +56,9 @@ import org.bitstorm.util.TextFileDialog;
 public class StandaloneGameOfLife extends GameOfLife {
 	private Frame appletFrame;
 	private String[] args;
-	private GameOfLifeGridIO gridIO;
+	private GameOfLifeGridIO gridIO;	
+	private ShapeCollection cellFactory = new ShapeCollection();
+	private Shape sp = null;
     /**
      * main() for standalone version.
 	 * @param args Not used.
@@ -424,7 +426,13 @@ public class StandaloneGameOfLife extends GameOfLife {
 			cellArray = new int[cells.size()][];
 			for ( int i=0; i<cells.size(); i++ )
 				cellArray[i] = (int[]) cells.get(i);
-			return new Shape( name, cellArray );
+			try {
+				sp = cellFactory.getShapeByName(name);
+			} catch (ShapeException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return sp;
 		}		
 		
 		/**
