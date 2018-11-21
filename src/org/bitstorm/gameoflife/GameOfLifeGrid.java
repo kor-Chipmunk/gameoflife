@@ -14,7 +14,7 @@ import java.util.Hashtable;
  *
  * @author Edwin Martin
  */
-public class GameOfLifeGrid implements CellGrid {
+public class GameOfLifeGrid implements CellGrid, GameOfLifeRule {
 	private int cellRows;
 	private int cellCols;
 	private int generations;
@@ -57,28 +57,21 @@ public class GameOfLifeGrid implements CellGrid {
 		nextShape.clear();
 	}
 
-	/**
-	 * Create next generation of shape.
-	 */
-	public synchronized void next() {
+	@Override
+	public synchronized void resetCells(Enumeration<Cell> enums) {
 		Cell cell;
-		int col, row;
-		int neighbours;
-		Enumeration enums;
-
-		generations++;
-		nextShape.clear();
-
-		// Reset cells
-		enums = currentShape.keys();
+		
 		while ( enums.hasMoreElements() ) {
 			cell = (Cell) enums.nextElement();
 			cell.neighbour = 0;
 		}
-		// Add neighbours
-		// You can't walk through an hashtable and also add elements. Took me a couple of ours to figure out. Argh!
-		// That's why we have a hashNew hashtable.
-		enums = currentShape.keys();
+	}
+	
+	@Override
+	public synchronized void addNeighbours(Enumeration<Cell> enums) {
+		Cell cell;
+		int col, row;
+		
 		while ( enums.hasMoreElements() ) {
 			cell = (Cell) enums.nextElement();
 			col = cell.col;
@@ -92,10 +85,12 @@ public class GameOfLifeGrid implements CellGrid {
 			addNeighbour( col, row+1 );
 			addNeighbour( col+1, row+1 );
 		}
+	}
+	
+	@Override
+	public synchronized void buryDeads(Enumeration<Cell> enums) {
+		Cell cell;
 		
-		// Bury the dead
-		// We are walking through an enum from we are also removing elements. Can be tricky.
-		enums = currentShape.keys();
 		while ( enums.hasMoreElements() ) {
 			cell = (Cell) enums.nextElement();
 			// Here is the Game Of Life rule (1):
@@ -103,8 +98,12 @@ public class GameOfLifeGrid implements CellGrid {
 				currentShape.remove( cell );
 			}
 		}
-		// Bring out the new borns
-		enums = nextShape.keys();
+	}
+	
+	@Override
+	public synchronized void newBorns(Enumeration<Cell> enums) {
+		Cell cell;
+		
 		while ( enums.hasMoreElements() ) {
 			cell = (Cell) enums.nextElement();
 			// Here is the Game Of Life rule (2):
@@ -112,6 +111,14 @@ public class GameOfLifeGrid implements CellGrid {
 				setCell( cell.col, cell.row, true );
 			}
 		}
+	}
+	
+	/**
+	 * Create next generation of shape.
+	 */
+	public synchronized void next() {
+		generations++;
+		checkRule(currentShape, nextShape);
 	}
 	
 	/**
