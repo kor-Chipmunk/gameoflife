@@ -49,7 +49,7 @@ public class GameOfLife extends Applet implements Runnable, GameOfLifeControlsLi
 		gameOfLifeGrid.clear();
 
 		// create GameOfLifeCanvas
-		gameOfLifeCanvas = new CellGridCanvas(gameOfLifeGrid, cellSize);
+		gameOfLifeCanvas = CellGridCanvas.getInstance(gameOfLifeGrid, cellSize);
 
 		// create GameOfLifeControls
 		controls = new GameOfLifeControls();

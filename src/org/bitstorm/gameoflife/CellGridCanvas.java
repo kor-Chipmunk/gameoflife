@@ -24,6 +24,7 @@ import java.util.Vector;
  * @author Edwin Martin
  */
 public class CellGridCanvas extends Canvas {
+	private static CellGridCanvas self;
 	private boolean cellUnderMouse;
 	/**
 	 * Image for double buffering, to prevent flickering.
@@ -46,7 +47,7 @@ public class CellGridCanvas extends Canvas {
 	 * @param cellGrid the GoL cellgrid
 	 * @param cellSize size of cell in pixels
 	 */
-	public CellGridCanvas(CellGrid cellGrid, int cellSize) {
+	private CellGridCanvas(CellGrid cellGrid, int cellSize) {
 		this.cellGrid = cellGrid;
 		this.cellSize = cellSize;
 
@@ -79,6 +80,18 @@ public class CellGridCanvas extends Canvas {
 			}
 		);
 
+	}
+	
+	public static CellGridCanvas getInstance(CellGrid cellGrid, int cellSize) {
+		if (self == null) {
+			synchronized (CellGridCanvas.class) {
+				if (self == null) {
+					self = new CellGridCanvas(cellGrid, cellSize);
+				}
+			}
+		}
+		
+		return self;
 	}
 	
 	/**
