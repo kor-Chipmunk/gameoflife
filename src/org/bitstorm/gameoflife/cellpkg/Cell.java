@@ -1,4 +1,4 @@
-package org.bitstorm.gameoflife;
+package org.bitstorm.gameoflife.cellpkg;
 
 /**
  * Every cell in the grid is a Cell-object.

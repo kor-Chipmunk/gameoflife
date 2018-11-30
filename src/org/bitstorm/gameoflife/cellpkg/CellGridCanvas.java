@@ -3,7 +3,7 @@
  * @author Edwin Martin
  */
 
-package org.bitstorm.gameoflife;
+package org.bitstorm.gameoflife.cellpkg;
 
 import java.awt.Canvas;
 import java.awt.Color;

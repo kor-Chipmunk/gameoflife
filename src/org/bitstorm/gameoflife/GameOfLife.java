@@ -14,6 +14,8 @@
 
 package org.bitstorm.gameoflife;
 
+import org.bitstorm.gameoflife.cellpkg.*;
+
 import java.applet.Applet;
 import java.awt.Color;
 import java.awt.GridBagConstraints;

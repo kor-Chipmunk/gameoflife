@@ -17,7 +17,9 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.Enumeration;
 import java.util.Vector;
-import org.bitstorm.gameoflife.ShapeCollection.Shapeofyou;;
+
+import org.bitstorm.gameoflife.cellpkg.ShapeCollection;
+import org.bitstorm.gameoflife.cellpkg.ShapeCollection.Shapeofyou;;
 
 /**
  * GUI-controls of the Game of Life.

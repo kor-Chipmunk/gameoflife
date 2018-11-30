@@ -40,6 +40,7 @@ import java.util.Enumeration;
 import java.util.Properties;
 import java.util.Vector;
 
+import org.bitstorm.gameoflife.cellpkg.*;
 import org.bitstorm.util.AboutDialog;
 import org.bitstorm.util.AlertBox;
 import org.bitstorm.util.EasyFile;

@@ -3,7 +3,11 @@
  * @author Edwin Martin
  */
 
-package org.bitstorm.gameoflife;
+package org.bitstorm.gameoflife.cellpkg;
+
+import org.bitstorm.gameoflife.cellpkg.Cell;
+import org.bitstorm.gameoflife.cellpkg.CellGrid;
+import org.bitstorm.gameoflife.cellpkg.Shape;
 
 import java.awt.Dimension;
 import java.util.Enumeration;
@@ -139,7 +143,7 @@ public class GameOfLifeGrid implements CellGrid {
 	
 	/**
 	 * Get enumeration of Cell's
-	 * @see org.bitstorm.gameoflife.CellGrid#getEnum()
+	 * @see CellGrid#getEnum()
 	 */
 	public Enumeration getEnum() {
 		return currentShape.keys();
@@ -197,7 +201,7 @@ public class GameOfLifeGrid implements CellGrid {
 
 	/**
 	 * Resize grid. Reuse existing cells.
-	 * @see org.bitstorm.gameoflife.CellGrid#resize(int, int)
+	 * @see CellGrid#resize(int, int)
 	 */
 	public synchronized void resize(int cellColsNew, int cellRowsNew) {
 		if ( cellCols==cellColsNew && cellRows==cellRowsNew )
