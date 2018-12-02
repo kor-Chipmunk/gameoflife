@@ -18,6 +18,7 @@ import java.awt.event.ItemListener;
 import java.util.Enumeration;
 import java.util.Vector;
 import org.bitstorm.gameoflife.ShapeCollection.Shapeofyou;;
+import org.bitstorm.gameoflife.statepkg.startstopContext;
 
 /**
  * GUI-controls of the Game of Life.
@@ -27,12 +28,13 @@ import org.bitstorm.gameoflife.ShapeCollection.Shapeofyou;;
  * @author Edwin Martin
  *
  */
-public class GameOfLifeControls extends Panel {
-	private Label genLabel;
+public class GameOfLifeControls extends Panel   {
 	private final String genLabelText = "Generations: ";
 	private final String nextLabelText = "Next";
 	private final String startLabelText = "Start";
 	private final String stopLabelText = "Stop";
+
+
 	public static final String SLOW = "Slow";
 	public static final String FAST = "Fast";
 	public static final String HYPER = "Hyper";
@@ -42,11 +44,16 @@ public class GameOfLifeControls extends Panel {
 	public static final int SIZE_BIG = 11;
 	public static final int SIZE_MEDIUM = 7;
 	public static final int SIZE_SMALL = 3;
+
+
+	private Label genLabel;
 	private Button startstopButton;
 	private Button nextButton;
 	private Vector listeners;
 	private Choice shapesChoice;
 	private Choice zoomChoice;
+	private Choice speedChoice;
+
 
 	/**
 	 * Contructs the controls.
@@ -72,13 +79,22 @@ public class GameOfLifeControls extends Panel {
 		);
 	
 		// pulldown menu with speeds
-		Choice speedChoice = new Choice();
+		speedChoice = new Choice();
 	
 		// add speeds
 		speedChoice.addItem(SLOW);
 		speedChoice.addItem(FAST);
 		speedChoice.addItem(HYPER);
-	
+
+		// pulldown menu with speeds
+		zoomChoice = new Choice();
+
+		// add speeds
+		zoomChoice.addItem(BIG);
+		zoomChoice.addItem(MEDIUM);
+		zoomChoice.addItem(SMALL);
+
+
 		// when item is selected
 		speedChoice.addItemListener(
 			new ItemListener() {
@@ -94,14 +110,7 @@ public class GameOfLifeControls extends Panel {
 			}
 		);
 	
-		// pulldown menu with speeds
-		zoomChoice = new Choice();
-	
-		// add speeds
-		zoomChoice.addItem(BIG);
-		zoomChoice.addItem(MEDIUM);
-		zoomChoice.addItem(SMALL);
-	
+
 		// when item is selected
 		zoomChoice.addItemListener(
 			new ItemListener() {
@@ -122,13 +131,18 @@ public class GameOfLifeControls extends Panel {
 	
 		// start and stop buttom
 		startstopButton = new Button(startLabelText);
-			
+
+
 		// when start/stop button is clicked
 		startstopButton.addActionListener(
 			new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					startStopButtonClicked();
+
+
 				}
+
+
 			}
 		);
 	
