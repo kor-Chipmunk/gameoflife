@@ -14,6 +14,8 @@
 
 package org.bitstorm.gameoflife;
 
+import org.bitstorm.gameoflife.statepkg.startstopContext;
+
 import java.applet.Applet;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -33,6 +35,7 @@ public class GameOfLife extends Applet implements Runnable, GameOfLifeControlsLi
 	protected int genTime;
 	protected GameOfLifeControls controls;
 	protected static Thread gameThread = null;
+	protected startstopContext context ;
 
 	/**
 	 * Initialize UI.
@@ -54,6 +57,7 @@ public class GameOfLife extends Applet implements Runnable, GameOfLifeControlsLi
 		// create GameOfLifeControls
 		controls = new GameOfLifeControls();
 		controls.addGameOfLifeControlsListener( this );
+		context = new startstopContext(this);
 
 		// put it all together
         GridBagLayout gridbag = new GridBagLayout();
@@ -242,11 +246,9 @@ public class GameOfLife extends Applet implements Runnable, GameOfLifeControlsLi
 	 * @see org.bitstorm.gameoflife.GameOfLifeControlsListener#startStopButtonClicked(org.bitstorm.gameoflife.GameOfLifeControlsEvent)
 	 */
 	public void startStopButtonClicked( GameOfLifeControlsEvent e ) {
-		if ( isRunning() ) {
-			stop();
-		} else {
-			start2();
-		}
+		
+		context.getState().doAction(context);
+
 	}
 
 	/** Callback from GameOfLifeControlsListener
