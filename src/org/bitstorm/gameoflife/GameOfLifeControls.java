@@ -18,8 +18,7 @@ import java.awt.event.ItemListener;
 import java.util.Enumeration;
 import java.util.Vector;
 import org.bitstorm.gameoflife.ShapeCollection.Shapeofyou;;
-import org.bitstorm.gameoflife.statepkg.startstopContext;
-
+import org.bitstorm.gameoflife.commandpkg.*;
 /**
  * GUI-controls of the Game of Life.
  * It contains controls like Shape, zoom and speed selector, next and start/stop-button.
@@ -55,6 +54,10 @@ public class GameOfLifeControls extends Panel   {
 	private Choice speedChoice;
 
 
+	private static GameOfLifeScrollboxControl scControl;
+	private static speedCommand speedC;
+	private static zoomCommand zoomC;
+
 	/**
 	 * Contructs the controls.
 	 */
@@ -85,6 +88,8 @@ public class GameOfLifeControls extends Panel   {
 		speedChoice.addItem(SLOW);
 		speedChoice.addItem(FAST);
 		speedChoice.addItem(HYPER);
+		//add additional speed
+		speedChoice.addItem("Ultra");
 
 		// pulldown menu with speeds
 		zoomChoice = new Choice();
@@ -94,36 +99,64 @@ public class GameOfLifeControls extends Panel   {
 		zoomChoice.addItem(MEDIUM);
 		zoomChoice.addItem(SMALL);
 
+		speedC = new speedCommand(this);
+		zoomC = new zoomCommand(this);
+		scControl = new GameOfLifeScrollboxControl(speedC,zoomC);
+
+//
+//		// when item is selected
+//		speedChoice.addItemListener(
+//			new ItemListener() {
+//				public void itemStateChanged(ItemEvent e) {
+//					String arg = (String) e.getItem();
+//					if (SLOW.equals(arg)) // slow
+//						speedChanged(1000);
+//					else if (FAST.equals(arg)) // fast
+//						speedChanged(100);
+//					else if (HYPER.equals(arg)) // hyperspeed
+//						speedChanged(10);
+//				}
+//			}
+//		);
+//
+//
+//		// when item is selected
+//		zoomChoice.addItemListener(
+//			new ItemListener() {
+//				public void itemStateChanged(ItemEvent e) {
+//					String arg = (String) e.getItem();
+//					if (BIG.equals(arg))
+//						zoomChanged(SIZE_BIG);
+//					else if (MEDIUM.equals(arg))
+//						zoomChanged(SIZE_MEDIUM);
+//					else if (SMALL.equals(arg))
+//						zoomChanged(SIZE_SMALL);
+//				}
+//			}
+//		);
+
+
 
 		// when item is selected
 		speedChoice.addItemListener(
-			new ItemListener() {
-				public void itemStateChanged(ItemEvent e) {
-					String arg = (String) e.getItem();
-					if (SLOW.equals(arg)) // slow
-						speedChanged(1000);
-					else if (FAST.equals(arg)) // fast
-						speedChanged(100);
-					else if (HYPER.equals(arg)) // hyperspeed
-						speedChanged(10);
+				new ItemListener() {
+					public void itemStateChanged(ItemEvent e) {
+						String arg = (String) e.getItem();
+						scControl.speedCommand(arg);
+					}
 				}
-			}
 		);
-	
+
 
 		// when item is selected
 		zoomChoice.addItemListener(
-			new ItemListener() {
-				public void itemStateChanged(ItemEvent e) {
-					String arg = (String) e.getItem();
-					if (BIG.equals(arg))
-						zoomChanged(SIZE_BIG);
-					else if (MEDIUM.equals(arg))
-						zoomChanged(SIZE_MEDIUM);
-					else if (SMALL.equals(arg))
-						zoomChanged(SIZE_SMALL);
+				new ItemListener() {
+					public void itemStateChanged(ItemEvent e) {
+						String arg = (String) e.getItem();
+						scControl.zoomCommand(arg);
+
+					}
 				}
-			}
 		);
 	
 		// number of generations
@@ -138,7 +171,6 @@ public class GameOfLifeControls extends Panel   {
 			new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					startStopButtonClicked();
-
 
 				}
 
