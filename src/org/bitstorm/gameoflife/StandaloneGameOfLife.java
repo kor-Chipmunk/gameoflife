@@ -77,49 +77,7 @@ public class StandaloneGameOfLife extends GameOfLife {
 	public void init( Frame parent ) {
 		appletFrame = parent;
 		getParams();
-
-		// set background colour
-		setBackground(new Color(0x999999));
-
-		// TODO: casten naar interface
-		// create StandAloneGameOfLifeGrid
-		gameOfLifeGrid = new GameOfLifeGrid( cellCols, cellRows);
-		gridIO = new GameOfLifeGridIO( gameOfLifeGrid );
-
-		// create GameOfLifeCanvas
-		gameOfLifeCanvas = CellGridCanvas.getInstance(gameOfLifeGrid, cellSize);
-
-		try {
-			// Make GameOfLifeCanvas a drop target
-			DropTarget dt = new DropTarget( gameOfLifeCanvas, DnDConstants.ACTION_COPY_OR_MOVE, new MyDropListener() );
-		} catch (NoClassDefFoundError e) {
-			// Ignore. Older Java version don't support dnd
-		}
-
-		// create GameOfLifeControls
-		controls = new GameOfLifeControls();
-		controls.addGameOfLifeControlsListener( this );
-
-		// put it all together
-        GridBagLayout gridbag = new GridBagLayout();
-        GridBagConstraints canvasContraints = new GridBagConstraints();
-        setLayout(gridbag);
-        canvasContraints.fill = GridBagConstraints.BOTH;
-        canvasContraints.weightx = 1;
-        canvasContraints.weighty = 1;
-        canvasContraints.gridx = GridBagConstraints.REMAINDER;
-        canvasContraints.gridy = 0;
-        canvasContraints.anchor = GridBagConstraints.CENTER;
-        gridbag.setConstraints(gameOfLifeCanvas, canvasContraints);
-        add(gameOfLifeCanvas);
-        GridBagConstraints controlsContraints = new GridBagConstraints();
-        canvasContraints.gridx = GridBagConstraints.REMAINDER;
-        canvasContraints.gridy = 1;
-        controlsContraints.gridx = GridBagConstraints.REMAINDER;
-        gridbag.setConstraints(controls, controlsContraints);
-        add(controls);
-		setVisible(true);
-		validate();
+		init();
 	}
 
 	/**
