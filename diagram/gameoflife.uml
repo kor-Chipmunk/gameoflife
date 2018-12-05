@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.bitstorm.gameoflife</OriginalElement>
+  <nodes>
+    <node x="1270.0" y="11.5">org.bitstorm.gameoflife.GameOfLifeRule</node>
+    <node x="0.0" y="1786.0">org.bitstorm.gameoflife.GameOfLifeScrollboxControl</node>
+    <node x="578.0" y="1786.0">org.bitstorm.gameoflife.Shape</node>
+    <node x="675.0" y="1203.0">org.bitstorm.gameoflife.Cell</node>
+    <node x="1448.0" y="1203.0">org.bitstorm.gameoflife.AppletFrame</node>
+    <node x="44.5" y="864.0">org.bitstorm.gameoflife.StandaloneGameOfLife</node>
+    <node x="0.0" y="1203.0">org.bitstorm.gameoflife.CellGridCanvas</node>
+    <node x="458.0" y="0.0">org.bitstorm.gameoflife.GameOfLifeControls</node>
+    <node x="1148.5" y="212.0">org.bitstorm.gameoflife.GameOfLifeGrid</node>
+    <node x="806.0" y="1786.0">org.bitstorm.gameoflife.ShapeException</node>
+    <node x="364.0" y="1203.0">org.bitstorm.gameoflife.ShapeCollection</node>
+    <node x="0.0" y="189.0">org.bitstorm.gameoflife.GameOfLife</node>
+    <node x="931.0" y="1203.0">org.bitstorm.gameoflife.GameOfLifeControlsEvent</node>
+    <node x="1004.0" y="0.0">org.bitstorm.gameoflife.CellGrid</node>
+    <node x="0.0" y="0.0">org.bitstorm.gameoflife.GameOfLifeControlsListener</node>
+    <node x="1284.0" y="1786.0">org.bitstorm.gameoflife.statepkg</node>
+    <node x="1069.0" y="1786.0">org.bitstorm.gameoflife.commandpkg</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.bitstorm.gameoflife.GameOfLifeGrid" target="org.bitstorm.gameoflife.CellGrid">
+      <point x="-79.75" y="-236.0" />
+      <point x="1228.25" y="187.0" />
+      <point x="1127.0" y="187.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="org.bitstorm.gameoflife.StandaloneGameOfLife" target="org.bitstorm.gameoflife.GameOfLife">
+      <point x="0.0" y="-147.0" />
+      <point x="0.0" y="312.5" />
+    </edge>
+    <edge source="org.bitstorm.gameoflife.GameOfLife" target="org.bitstorm.gameoflife.GameOfLifeControlsListener">
+      <point x="0.0" y="-312.5" />
+      <point x="0.0" y="69.5" />
+    </edge>
+    <edge source="org.bitstorm.gameoflife.GameOfLifeGrid" target="org.bitstorm.gameoflife.GameOfLifeRule">
+      <point x="79.75" y="-236.0" />
+      <point x="1387.75" y="187.0" />
+      <point x="1489.0" y="187.0" />
+      <point x="0.0" y="69.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.5518463871450869" x="757.6670132603617" y="1310.0401425995226" />
+  <SelectedNodes>
+    <node>org.bitstorm.gameoflife.CellGrid</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
