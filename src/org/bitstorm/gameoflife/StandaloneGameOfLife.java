@@ -457,10 +457,10 @@ class AppletFrame extends Frame {
 	public AppletFrame(String title, StandaloneGameOfLife applet) {
         super( title );
 		this.applet = applet;
-
-		URL iconURL = this.getClass().getResource("icon.gif");
-		Image icon = Toolkit.getDefaultToolkit().getImage( iconURL );
-		this.setIconImage( icon );
+//
+//		URL iconURL = this.getClass().getResource("icon.gif");
+//		Image icon = Toolkit.getDefaultToolkit().getImage( iconURL );
+//		this.setIconImage( icon );
 
 		enableEvents(Event.WINDOW_DESTROY);
 		
