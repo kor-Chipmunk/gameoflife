@@ -18,6 +18,7 @@ public class zoomCommand implements GameOfLifeCommand {
         zoomMap.put("Big",new Integer(11));
         zoomMap.put("Medium",new Integer(7));
         zoomMap.put("Small",new Integer(3));
+        zoomMap.put("Very small",new Integer(3));
 
 
     }

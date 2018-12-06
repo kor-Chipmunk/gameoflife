@@ -40,6 +40,8 @@ public class GameOfLifeControls extends Panel   {
 	public static final String BIG = "Big";
 	public static final String MEDIUM = "Medium";
 	public static final String SMALL = "Small";
+	public static final String VERYSMALL = "Very Small";
+
 	public static final int SIZE_BIG = 11;
 	public static final int SIZE_MEDIUM = 7;
 	public static final int SIZE_SMALL = 3;
@@ -98,6 +100,8 @@ public class GameOfLifeControls extends Panel   {
 		zoomChoice.addItem(BIG);
 		zoomChoice.addItem(MEDIUM);
 		zoomChoice.addItem(SMALL);
+		zoomChoice.addItem("Very small");
+
 
 		speedC = new speedCommand(this);
 		zoomC = new zoomCommand(this);
