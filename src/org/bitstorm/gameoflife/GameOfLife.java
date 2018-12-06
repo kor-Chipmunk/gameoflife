@@ -109,12 +109,16 @@ public class GameOfLife extends Applet implements Runnable, GameOfLifeControlsLi
 	protected int getParamInteger( String name, int defaultParam ) {
 		String param;
 		int paramInt;
-
-		param = getParameter( name );
-		if ( param == null )
-			paramInt = defaultParam;
-		else
-			paramInt = Integer.valueOf(param).intValue();
+		
+		try {
+			param = getParameter( name );
+			if ( param == null )
+				paramInt = defaultParam;
+			else
+				paramInt = Integer.valueOf(param).intValue();
+		} catch (NullPointerException ex) {
+			return defaultParam;
+		}
 		return paramInt;
 	}
 
